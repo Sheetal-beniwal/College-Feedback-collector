@@ -45,7 +45,7 @@ function Facilities() {
             </button>
 
             <button className="border-2 border-gray-400 px-4 py-2 text-xl font-mono rounded hover:bg-gray-100 text-left">
-            <RouterLink to="/feedback/facilities/library"> Hostel and Accommodation </RouterLink> 
+            <RouterLink to="/feedback/facilities/hostel"> Hostel and Accommodation </RouterLink> 
             </button>
 
           </div>

@@ -12,7 +12,7 @@ function FeedbackNavbar() {
           <li className="hover:text-blue-600 cursor-pointer"> <RouterLink to="/feedback/academics">Academics </RouterLink></li>
           <li className="hover:text-blue-600 cursor-pointer"> <RouterLink to="/feedback/facilities"> Facilities </RouterLink></li>
           <li className="hover:text-blue-600 cursor-pointer"> <RouterLink to="/feedback/events"> Events</RouterLink> </li>
-          <li className="hover:text-blue-600 cursor-pointer"> <RouterLink to="/feedback/faculty"> Faculty </RouterLink></li>
+        
         </ul>
       </nav>
      

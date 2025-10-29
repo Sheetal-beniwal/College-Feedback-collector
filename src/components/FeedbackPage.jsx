@@ -61,18 +61,7 @@ function FeedbackPage() {
               </a>
             </div>
 
-            <div className="p-6 border rounded-xl bg-white shadow hover:shadow-gray-500 transition">
-              <h3 className="text-lg font-bold">Faculty</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Share your thoughts about labs, classrooms, or infrastructure.
-              </p>
-              <a
-                href="/feedback/faculty"
-                className="text-blue-600 font-semibold hover:underline"
-              >
-                Give Feedback →
-              </a>
-            </div>
+           
           </div>
         </div>
 

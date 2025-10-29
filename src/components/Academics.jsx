@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
-import FeedbackNavbar from "../FeedbackNavbar";
+import FeedbackNavbar from "./FeedbackNavbar";
 
-export default function Library() {
+export default function Academics() {
   const [ratings, setRatings] = useState({
     seating: 0,
     projectors: 0,
@@ -16,46 +16,49 @@ export default function Library() {
   return (
     <>
     <FeedbackNavbar/>
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-50 px-6 py-12">
+    <div className=" bg-gray-50">
+    <div className="px-6 py-10">
+        {/* Heading */}
+        <h2 className="text-4xl font-bold font-mono mb-2">
+        Feedback for Academics
+        </h2>
+        <p className="text-gray-600 mb-10 font-mono">
+        Rate academics like you rate your favorite Netflix shows
+        </p>
+        </div>
+   </div>
+    
+    <div className="flex flex-col md:flex-row items-center justify-center  bg-gray-50 px-6 ">
+        
       {/* Feedback Form */}
       <div className="w-full md:w-2/3 lg:w-1/2 bg-white shadow-lg rounded-xl p-6 border">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
-          Feedback for Facilities
-        </h2>
-        <p className="text-gray-500 mb-6">
-          Campus comfort check: cozy, chaotic, or somewhere in between? 
-          We’re listening!
-        </p>
+        
 
         {/* Classrooms Title + Input */}
-        <div className="flex flex-col md:flex-row items-center gap-4 mb-6">
-          <h3 className="text-3xl font-bold text-gray-800">Library</h3>
-          <input
-            type="text"
-            placeholder="Library no."
-            className="border rounded-lg px-4 py-2 w-full md:w-40"
-          />
+
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
+        <h3 className="text-3xl font-bold text-gray-800">Academics</h3>      
         </div>
 
         {/* Rating Categories */}
         <div className="space-y-6">
           {/* Seating */}
           <RatingRow
-            label="Comfort of seating, lighting and ventilation"
+            label="Syllabus completion"
             value={ratings.seating}
             onChange={(val) => handleRating("seating", val)}
           />
 
           {/* Projectors */}
           <RatingRow
-            label="Availability of Books"
+            label="Teaching methods"
             value={ratings.projectors}
             onChange={(val) => handleRating("projectors", val)}
           />
 
           {/* Cleanliness */}
           <RatingRow
-            label="Cleanliness and maintenance"
+            label="Doubt solving"
             value={ratings.cleanliness}
             onChange={(val) => handleRating("cleanliness", val)}
           />

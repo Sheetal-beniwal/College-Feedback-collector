@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import FeedbackNavbar from "../FeedbackNavbar";
 
-export default function Library() {
+export default function Hostel() {
   const [ratings, setRatings] = useState({
     seating: 0,
     projectors: 0,
@@ -29,12 +29,8 @@ export default function Library() {
 
         {/* Classrooms Title + Input */}
         <div className="flex flex-col md:flex-row items-center gap-4 mb-6">
-          <h3 className="text-3xl font-bold text-gray-800">Library</h3>
-          <input
-            type="text"
-            placeholder="Library no."
-            className="border rounded-lg px-4 py-2 w-full md:w-40"
-          />
+          <h3 className="text-3xl font-bold text-gray-800">Hostel and Accomodation</h3>
+          
         </div>
 
         {/* Rating Categories */}
@@ -48,7 +44,7 @@ export default function Library() {
 
           {/* Projectors */}
           <RatingRow
-            label="Availability of Books"
+            label="Security in Hostel"
             value={ratings.projectors}
             onChange={(val) => handleRating("projectors", val)}
           />
