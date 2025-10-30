@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import Navbar from './Navbar';
 
 function FeedbackPage() {
-  return (
+  return ( 
     <>
       <Navbar/>
       <div className="bg-gray-100 min-h-[calc(100vh-64px)] p-8 md:p-12">
