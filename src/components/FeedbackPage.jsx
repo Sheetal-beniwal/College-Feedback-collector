@@ -1,84 +1,93 @@
-import React from 'react'
-
+import React from 'react';
 import FeedbackNavbar from './FeedbackNavbar';
+import { Link as RouterLink } from 'react-router-dom';
+import Navbar from './Navbar';
 
 function FeedbackPage() {
   return (
     <>
-    <FeedbackNavbar/>
-    
+      <Navbar/>
+      <div className="bg-gray-100 min-h-[calc(100vh-64px)] p-8 md:p-12">
+        <section className="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
+          {/* Left Content */}
+          <div className="max-w-xl md:order-1">
+            <h2 className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+              Be it academics, infrastructure, facilities, or college events – we’re all ears! 
+              What’s on your mind to share valuable feedback about today?
+            </h2>
 
-      {/* Hero Section */}
-      <section className="flex flex-col-reverse md:flex-row items-center justify-between px-8 md:px-16 py-12 gap-10">
-        {/* Left Content */}
-        <div className="max-w-xl">
-          <h2 className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-            Be it academics, infrastructure, facilities, or college events – we’re all ears! 
-            What’s on your mind to share valuable feedback about today?
-          </h2>
+            {/* Feedback Categories */}
+            <div className="space-y-6">
+              {/* Academics Card */}
+              <div className="p-6 border rounded-xl bg-white shadow hover:shadow-lg hover:border-gray-300 transition-all cursor-pointer">
+                <h3 className="text-lg font-bold text-gray-900">Academics</h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Give feedback about courses, curriculum, and academic support.
+                </p>
+                <RouterLink
+                  to="/feedback/academics"
+                  className="inline-block mt-4 px-6 py-2 bg-gray-900 text-white rounded-md font-semibold shadow-md hover:bg-gray-700 transition-colors"
+                >
+                  Give Feedback →
+                </RouterLink>
+              </div>
 
+              {/* Facilities Card */}
+              <div className="p-6 border rounded-xl bg-white shadow hover:shadow-lg hover:border-gray-300 transition-all cursor-pointer">
+                <h3 className="text-lg font-bold text-gray-900">Facilities</h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Share your thoughts about labs, classrooms, or infrastructure.
+                </p>
+                <RouterLink
+                  to="/feedback/facilities"
+                  className="inline-block mt-4 px-6 py-2 bg-gray-900 text-white rounded-md font-semibold shadow-md hover:bg-gray-700 transition-colors"
+                >
+                  Give Feedback →
+                </RouterLink>
+              </div>
 
-          {/* Feedback Cards */}
-          <div className="space-y-6">
-            <div className="p-6 border rounded-xl bg-white shadow hover:shadow-gray-500 transition">
-              <h3 className="text-lg font-bold">Academics</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Give feedback about courses, curriculum, and academic support.
-              </p>
-              <a
-                href="/feedback/academics"
-                className="text-blue-600 font-semibold hover:underline"
-              >
-                Give Feedback →
-              </a>
+              {/* Events Card */}
+              <div className="p-6 border rounded-xl bg-white shadow hover:shadow-lg hover:border-gray-300 transition-all cursor-pointer">
+                <h3 className="text-lg font-bold text-gray-900">Events</h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Share your thoughts about labs, classrooms, or infrastructure.
+                </p>
+                <RouterLink
+                  to="/feedback/events"
+                  className="inline-block mt-4 px-6 py-2 bg-gray-900 text-white rounded-md font-semibold shadow-md hover:bg-gray-700 transition-colors"
+                >
+                  Give Feedback →
+                </RouterLink>
+              </div>
+
+              {/* Faculty Card */}
+              <div className="p-6 border rounded-xl bg-white shadow hover:shadow-lg hover:border-gray-300 transition-all cursor-pointer">
+                <h3 className="text-lg font-bold text-gray-900">Faculty</h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  Share your thoughts about labs, classrooms, or infrastructure.
+                </p>
+                <RouterLink
+                  to="/feedback/faculty"
+                  className="inline-block mt-4 px-6 py-2 bg-gray-900 text-white rounded-md font-semibold shadow-md hover:bg-gray-700 transition-colors"
+                >
+                  Give Feedback →
+                </RouterLink>
+              </div>
             </div>
-
-
-            <div className="p-6 border rounded-xl bg-white shadow hover:shadow-gray-500 transition">
-              <h3 className="text-lg font-bold">Facilities</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Share your thoughts about labs, classrooms, or infrastructure.
-              </p>
-              <a
-                href="/feedback/facilities"
-                className="text-blue-600 font-semibold hover:underline"
-              >
-                Give Feedback →
-              </a>
-            </div>
-
-
-            <div className="p-6 border rounded-xl bg-white shadow hover:shadow-gray-500 transition">
-              <h3 className="text-lg font-bold">Events</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Share your thoughts about labs, classrooms, or infrastructure.
-              </p>
-              <a
-                href="/feedback/events"
-                className="text-blue-600 font-semibold hover:underline"
-              >
-                Give Feedback →
-              </a>
-            </div>
-
-           
           </div>
-        </div>
 
-        {/* Right Illustration */}
-        <div className="flex justify-center md:justify-end w-full md:w-1/2">
-          <img
-            src="/feedback_page.jpg"
-            alt="Students Illustration"
-            className="w-72 md:w-full"
-          />
-        </div>
-      </section>
-  
+          {/* Right Illustration */}
+          <div className="flex justify-center items-center md:order-2">
+            <img
+              src="/Gemini_Generated_Image_4y9occ4y9occ4y9o-Photoroom.png"
+              alt="Students Illustration"
+              className="w-full max-w-xs md:max-w-none md:w-auto"
+            />
+          </div>
+        </section>
+      </div>
     </>
   );
 }
 
 export default FeedbackPage;
-
-   

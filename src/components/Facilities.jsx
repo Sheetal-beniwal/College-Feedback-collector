@@ -1,61 +1,70 @@
-// App.jsx
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import FeedbackNavbar from "./FeedbackNavbar";
+import Navbar from "./Navbar";
 
 function Facilities() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navbar */}
-      <FeedbackNavbar/>
+    <div className="min-h-screen bg-gray-100 text-gray-900">
+      <Navbar />
 
-      {/* Main Content */}
-      <div className="px-6 py-10">
-        {/* Heading */}
-        <h2 className="text-4xl font-bold font-mono mb-2">
-          Feedback for Facilities
-        </h2>
-        <p className="text-gray-600 mb-10 font-mono">
-          Campus comfort check: cozy, chaotic, or somewhere in between? We’re
-          listening!
-        </p>
+      <div className="container mx-auto px-6 py-12 md:py-20">
+        <div className="text-center mb-10">
+          <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-2">
+            Feedback for Facilities
+          </h2>
+          <p className="text-lg md:text-xl font-light text-gray-700 max-w-2xl mx-auto">
+            Campus comfort check: cozy, chaotic, or somewhere in between? We’re
+            listening!
+          </p>
+        </div>
 
-        {/* Content Grid */}
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          {/* Left Buttons */}
-          <div className="flex flex-col gap-4">
-            <button className="border-2 border-gray-400 px-4 py-2 text-xl font-mono rounded hover:bg-gray-100 text-left">
-            <RouterLink to="/feedback/facilities/classroom">Classrooms </RouterLink>
-            </button>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Left Buttons Section */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <RouterLink to="/feedback/facilities/classroom">
+              <button className="w-full px-6 py-4 bg-white border-2 border-gray-200 text-gray-900 font-semibold text-lg rounded-xl shadow-sm hover:bg-gray-200 hover:border-gray-400 transition-colors duration-200 text-left">
+                Classrooms
+              </button>
+            </RouterLink>
 
-            <button className="border-2 border-gray-400 px-4 py-2 text-xl font-mono rounded hover:bg-gray-100 text-left">
-            <RouterLink to="/feedback/facilities/library">  Library</RouterLink> 
-            </button>
+            <RouterLink to="/feedback/facilities/library">
+              <button className="w-full px-6 py-4 bg-white border-2 border-gray-200 text-gray-900 font-semibold text-lg rounded-xl shadow-sm hover:bg-gray-200 hover:border-gray-400 transition-colors duration-200 text-left">
+                Library
+              </button>
+            </RouterLink>
 
-            <button className="border-2 border-gray-400 px-4 py-2 text-xl font-mono rounded hover:bg-gray-100 text-left">
-            <RouterLink to="/feedback/facilities/labs"> Labs</RouterLink> 
-            </button>
+            <RouterLink to="/feedback/facilities/labs">
+              <button className="w-full px-6 py-4 bg-white border-2 border-gray-200 text-gray-900 font-semibold text-lg rounded-xl shadow-sm hover:bg-gray-200 hover:border-gray-400 transition-colors duration-200 text-left">
+                Labs
+              </button>
+            </RouterLink>
 
-            <button className="border-2 border-gray-400 px-4 py-2 text-xl font-mono rounded hover:bg-gray-100 text-left">
-            <RouterLink to="/feedback/facilities/canteen">  Canteen</RouterLink> 
-            </button>
+            <RouterLink to="/feedback/facilities/canteen">
+              <button className="w-full px-6 py-4 bg-white border-2 border-gray-200 text-gray-900 font-semibold text-lg rounded-xl shadow-sm hover:bg-gray-200 hover:border-gray-400 transition-colors duration-200 text-left">
+                Canteen
+              </button>
+            </RouterLink>
 
-            <button className="border-2 border-gray-400 px-4 py-2 text-xl font-mono rounded hover:bg-gray-100 text-left">
-            <RouterLink to="/feedback/facilities/infra">Campus Infrastructure</RouterLink> 
-            </button>
+            <RouterLink to="/feedback/facilities/infra">
+              <button className="w-full px-6 py-4 bg-white border-2 border-gray-200 text-gray-900 font-semibold text-lg rounded-xl shadow-sm hover:bg-gray-200 hover:border-gray-400 transition-colors duration-200 text-left">
+                Campus Infrastructure
+              </button>
+            </RouterLink>
 
-            <button className="border-2 border-gray-400 px-4 py-2 text-xl font-mono rounded hover:bg-gray-100 text-left">
-            <RouterLink to="/feedback/facilities/hostel"> Hostel and Accommodation </RouterLink> 
-            </button>
-
+            <RouterLink to="/feedback/facilities/hostel">
+              <button className="w-full px-6 py-4 bg-white border-2 border-gray-200 text-gray-900 font-semibold text-lg rounded-xl shadow-sm hover:bg-gray-200 hover:border-gray-400 transition-colors duration-200 text-left">
+                Hostel and Accommodation
+              </button>
+            </RouterLink>
           </div>
 
-          {/* Right Image */}
-          <div className="flex justify-center">
+          {/* Right Image Section */}
+          <div className="flex justify-center md:justify-end">
             <img
               src="/feedback_photo.webp"
               alt="Feedback Illustration"
-              className="max-w-sm w-full"
+              className="w-full max-w-sm"
             />
           </div>
         </div>

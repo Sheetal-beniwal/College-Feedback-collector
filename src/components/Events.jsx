@@ -1,121 +1,75 @@
-import { useState } from "react";
-import { FaStar } from "react-icons/fa";
+import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import FeedbackNavbar from "./FeedbackNavbar";
+import Navbar from "./Navbar";
 
-export default function Events() {
-  const [ratings, setRatings] = useState({
-    seating: 0,
-    projectors: 0,
-    cleanliness: 0,
-  });
-
-  const handleRating = (category, value) => {
-    setRatings({ ...ratings, [category]: value });
-  };
-
+function Events() {
   return (
-    <>
-    <FeedbackNavbar/>
-    <div className=" bg-gray-50">
-    <div className="px-6 py-10">
-        {/* Heading */}
-        <h2 className="text-4xl font-bold font-mono mb-2">
-        Feedback for Events
-        </h2>
-        <p className="text-gray-600 mb-10 font-mono">
-        From stage lights to spotlights – tell us how the event felt for you!
-        </p>
-        </div>
-   </div>
-    
-    <div className="flex flex-col md:flex-row items-center justify-center  bg-gray-50 px-6 ">
-        
-      {/* Feedback Form */}
-      <div className="w-full md:w-2/3 lg:w-1/2 bg-white shadow-lg rounded-xl p-6 border">
-        
+    <div className="min-h-screen bg-gray-100 text-gray-900">
+      <FeedbackNavbar />
 
-        {/* Classrooms Title + Input */}
-
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
-        <h3 className="text-3xl font-bold text-gray-800">Event name</h3>
-        <input
-            type="text"
-            placeholder="Event"
-            className="border rounded-lg px-4 py-2 w-full md:w-40"
-          />
-          
-          
+      <div className="container mx-auto px-6 py-12 md:py-20">
+        <div className="text-center mb-10">
+          <h2 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-2">
+            Feedback for Events
+          </h2>
+          <p className="text-lg md:text-xl font-light text-gray-700 max-w-2xl mx-auto">
+            From festivals to workshops, share your take on the campus event scene.
+          </p>
         </div>
 
-        {/* Rating Categories */}
-        <div className="space-y-6">
-          {/* Seating */}
-          <RatingRow
-            label="Overall Experience"
-            value={ratings.seating}
-            onChange={(val) => handleRating("seating", val)}
-          />
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Left Buttons Section */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <RouterLink to="/feedback/events/cultural">
+              <button className="w-full px-6 py-4 bg-white border-2 border-gray-200 text-gray-900 font-semibold text-lg rounded-xl shadow-sm hover:bg-gray-200 hover:border-gray-400 transition-colors duration-200 text-left">
+                Cultural Events
+              </button>
+            </RouterLink>
 
-          {/* Projectors */}
-          <RatingRow
-            label="Refreshment Quality"
-            value={ratings.projectors}
-            onChange={(val) => handleRating("projectors", val)}
-          />
+            <RouterLink to="/feedback/events/sports">
+              <button className="w-full px-6 py-4 bg-white border-2 border-gray-200 text-gray-900 font-semibold text-lg rounded-xl shadow-sm hover:bg-gray-200 hover:border-gray-400 transition-colors duration-200 text-left">
+                Sports Events
+              </button>
+            </RouterLink>
 
-          {/* Cleanliness */}
-          <RatingRow
-            label="Was the event well-organized"
-            value={ratings.cleanliness}
-            onChange={(val) => handleRating("cleanliness", val)}
-          />
+            <RouterLink to="/feedback/events/workshops">
+              <button className="w-full px-6 py-4 bg-white border-2 border-gray-200 text-gray-900 font-semibold text-lg rounded-xl shadow-sm hover:bg-gray-200 hover:border-gray-400 transition-colors duration-200 text-left">
+                Workshops & Seminars
+              </button>
+            </RouterLink>
+
+            <RouterLink to="/feedback/events/social">
+              <button className="w-full px-6 py-4 bg-white border-2 border-gray-200 text-gray-900 font-semibold text-lg rounded-xl shadow-sm hover:bg-gray-200 hover:border-gray-400 transition-colors duration-200 text-left">
+                Social Gatherings
+              </button>
+            </RouterLink>
+
+            <RouterLink to="/feedback/events/fests">
+              <button className="w-full px-6 py-4 bg-white border-2 border-gray-200 text-gray-900 font-semibold text-lg rounded-xl shadow-sm hover:bg-gray-200 hover:border-gray-400 transition-colors duration-200 text-left">
+                Campus Fests
+              </button>
+            </RouterLink>
+
+            <RouterLink to="/feedback/events/performances">
+              <button className="w-full px-6 py-4 bg-white border-2 border-gray-200 text-gray-900 font-semibold text-lg rounded-xl shadow-sm hover:bg-gray-200 hover:border-gray-400 transition-colors duration-200 text-left">
+                Performances & Shows
+              </button>
+            </RouterLink>
+          </div>
+
+          {/* Right Image Section */}
+          <div className="flex justify-center md:justify-end">
+            <img
+              src="/feedback_photo.webp"
+              alt="Feedback Illustration"
+              className="w-full max-w-sm"
+            />
+          </div>
         </div>
-
-        {/* Feedback Box */}
-        <textarea
-          placeholder="your thoughts for this event"
-          rows={4}
-          className="w-full mt-6 border rounded-lg px-4 py-3 focus:outline-none"
-        ></textarea>
-
-        {/* Upload Button */}
-        <div className="flex justify-end mt-4">
-          <label className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200">
-            Upload picture
-            <input type="file" className="hidden" />
-          </label>
-        </div>
-      </div>
-
-      {/* Right Illustration (Responsive Hide on Small Screens) */}
-      <div className="hidden md:flex md:w-1/3 justify-center mt-8 md:mt-0">
-        <img
-          src="/feedback_photo.webp"
-          alt="Feedback illustration"
-          className="w-64 h-64 object-contain"
-        />
-      </div>
-    </div>
-    </>
-  );
-}
-
-function RatingRow({ label, value, onChange }) {
-  return (
-    <div className="flex flex-col md:flex-row items-center justify-between gap-3">
-      <p className="text-gray-700 font-medium w-full md:w-1/2">{label}</p>
-      <div className="flex gap-2">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <FaStar
-            key={star}
-            onClick={() => onChange(star)}
-            className={`cursor-pointer text-2xl ${
-              star <= value ? "text-yellow-400" : "text-gray-300"
-            }`}
-          />
-        ))}
       </div>
     </div>
   );
 }
 
+export default Events;
