@@ -15,87 +15,83 @@ export default function Events() {
 
   return (
     <>
-    <FeedbackNavbar/>
-    <div className=" bg-gray-50">
-    <div className="px-6 py-10">
+      <FeedbackNavbar />
+
+      {/* Page Wrapper */}
+      <div className="min-h-screen bg-gradient-to-b from-pink-100 via-rose-50 to-pink-200 flex flex-col items-center">
         {/* Heading */}
-        <h2 className="text-4xl font-bold font-mono mb-2">
-        Feedback for Events
-        </h2>
-        <p className="text-gray-600 mb-10 font-mono">
-        From stage lights to spotlights – tell us how the event felt for you!
-        </p>
-        </div>
-   </div>
-    
-    <div className="flex flex-col md:flex-row items-center justify-center  bg-gray-50 px-6 ">
-        
-      {/* Feedback Form */}
-      <div className="w-full md:w-2/3 lg:w-1/2 bg-white shadow-lg rounded-xl p-6 border">
-        
-
-        {/* Classrooms Title + Input */}
-
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
-        <h3 className="text-3xl font-bold text-gray-800">Event name</h3>
-        <input
-            type="text"
-            placeholder="Event"
-            className="border rounded-lg px-4 py-2 w-full md:w-40"
-          />
-          
-          
+        <div className="text-center mt-10 mb-6">
+          <h2 className="text-4xl font-bold font-mono text-gray-800">
+            Feedback for Events
+          </h2>
+          <p className="text-gray-600 font-mono mt-2">
+            From stage lights to spotlights – tell us how the event felt for you!
+          </p>
         </div>
 
-        {/* Rating Categories */}
-        <div className="space-y-6">
-          {/* Seating */}
-          <RatingRow
-            label="Overall Experience"
-            value={ratings.seating}
-            onChange={(val) => handleRating("seating", val)}
-          />
+        {/* Main Content */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-10 px-6 w-full max-w-6xl">
+          {/* Feedback Form */}
+          <div className="w-full md:w-1/2 bg-white/90 backdrop-blur-sm shadow-xl rounded-2xl p-8 border border-pink-200">
+            {/* Event Name */}
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
+              <h3 className="text-2xl font-bold text-pink-700">Event name</h3>
+              <input
+                type="text"
+                placeholder="Event"
+                className="border-2 border-pink-200 rounded-lg px-4 py-2 w-full md:w-48 focus:outline-none focus:border-pink-400"
+              />
+            </div>
 
-          {/* Projectors */}
-          <RatingRow
-            label="Refreshment Quality"
-            value={ratings.projectors}
-            onChange={(val) => handleRating("projectors", val)}
-          />
+            {/* Rating Categories */}
+            <div className="space-y-6">
+              <RatingRow
+                label="Overall Experience"
+                value={ratings.seating}
+                onChange={(val) => handleRating("seating", val)}
+              />
+              <RatingRow
+                label="Refreshment Quality"
+                value={ratings.projectors}
+                onChange={(val) => handleRating("projectors", val)}
+              />
+              <RatingRow
+                label="Event Organization"
+                value={ratings.cleanliness}
+                onChange={(val) => handleRating("cleanliness", val)}
+              />
+            </div>
 
-          {/* Cleanliness */}
-          <RatingRow
-            label="Was the event well-organized"
-            value={ratings.cleanliness}
-            onChange={(val) => handleRating("cleanliness", val)}
-          />
-        </div>
+            {/* Feedback Box */}
+            <textarea
+              placeholder="Share your thoughts about the event..."
+              rows={4}
+              className="w-full mt-6 border-2 border-pink-200 rounded-lg px-4 py-3 focus:outline-none focus:border-pink-400"
+            ></textarea>
 
-        {/* Feedback Box */}
-        <textarea
-          placeholder="your thoughts for this event"
-          rows={4}
-          className="w-full mt-6 border rounded-lg px-4 py-3 focus:outline-none"
-        ></textarea>
+            {/* Buttons */}
+            <div className="flex flex-col md:flex-row justify-between items-center mt-6 gap-4">
+              <label className="cursor-pointer border-2 border-pink-300 px-4 py-2 rounded-lg bg-pink-100 hover:bg-pink-200 text-pink-700 font-semibold transition-all">
+                Upload Picture
+                <input type="file" className="hidden" />
+              </label>
 
-        {/* Upload Button */}
-        <div className="flex justify-end mt-4">
-          <label className="cursor-pointer border px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200">
-            Upload picture
-            <input type="file" className="hidden" />
-          </label>
+              <button className="bg-pink-500 text-white font-bold px-6 py-2 rounded-lg shadow-md hover:bg-pink-600 active:scale-95 transition-all">
+                SUBMIT
+              </button>
+            </div>
+          </div>
+
+          {/* Illustration */}
+          <div className="w-full md:w-1/2 flex justify-center">
+            <img
+              src="/feedback_photo.webp"
+              alt="Feedback illustration"
+              className="w-80 h-80 object-contain rounded-xl shadow-md"
+            />
+          </div>
         </div>
       </div>
-
-      {/* Right Illustration (Responsive Hide on Small Screens) */}
-      <div className="hidden md:flex md:w-1/3 justify-center mt-8 md:mt-0">
-        <img
-          src="/feedback_photo.webp"
-          alt="Feedback illustration"
-          className="w-64 h-64 object-contain"
-        />
-      </div>
-    </div>
     </>
   );
 }
@@ -109,8 +105,8 @@ function RatingRow({ label, value, onChange }) {
           <FaStar
             key={star}
             onClick={() => onChange(star)}
-            className={`cursor-pointer text-2xl ${
-              star <= value ? "text-yellow-400" : "text-gray-300"
+            className={`cursor-pointer text-2xl transition-colors duration-150 ${
+              star <= value ? "text-pink-400" : "text-gray-300 hover:text-pink-300"
             }`}
           />
         ))}
@@ -118,4 +114,3 @@ function RatingRow({ label, value, onChange }) {
     </div>
   );
 }
-
