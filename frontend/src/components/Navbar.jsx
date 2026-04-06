@@ -41,7 +41,7 @@ function Navbar() {
           </RouterLink>
 
           <RouterLink
-            to="#"
+            to="/dashboard"
             className="text-gray-700 hover:text-pink-600 hover:underline hover:underline-offset-4 transition-all duration-200"
           >
             All Feedback

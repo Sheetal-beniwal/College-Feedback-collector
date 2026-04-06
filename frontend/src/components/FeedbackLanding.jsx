@@ -10,18 +10,18 @@ export default function FeedbackLanding() {
     <>
       <Navbar />
 
-      {/* 🎨 Hero Section with New Color Scheme */}
+      
       <div className="relative w-full h-screen overflow-hidden">
-        {/* 🩵 Background Spline */}
+       
         <Spline
           scene="https://prod.spline.design/YNDHy5tbeP3tn72y/scene.splinecode"
           className="absolute inset-0 w-full h-full"
         />
 
-        {/* 🌌 Blue-Purple overlay */}
+        
         <div className="absolute inset-0 bg-gradient-to-br from-gray-100/60 via-gray-200/50 to-gray-300/50 z-[5]" />
 
-        {/* ✨ Content */}
+       
         <main className="relative z-10 flex flex-col items-center justify-center h-full text-center text-black px-6">
           <h2 className="text-5xl md:text-6xl font-extrabold leading-tight drop-shadow-[0_0_20px_rgba(156,163,175,0.7)]">
             Your Feedback Matters <br /> More Than You Think
@@ -44,7 +44,7 @@ export default function FeedbackLanding() {
         </main>
       </div>
 
-      {/* 🌸 Other Sections */}
+      
       <section id="contact">
         <ContactUs />
       </section>

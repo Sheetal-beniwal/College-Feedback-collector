@@ -11,6 +11,7 @@ import Hostel from './components/facilities/Hostel'
 import FeedbackLanding from './components/FeedbackLanding'
 import FeedbackPage from './components/FeedbackPage'
 
+import FeedbackDashboard from "./components/FeedbackDashboard";
 import {
   BrowserRouter as Router,
   Routes,
@@ -36,6 +37,10 @@ function App() {
 
         <Route path='/feedback/events' element={<Events />} />
         <Route path='/feedback/academics' element={<Academics />} />
+
+        <Route path="/dashboard" element={<FeedbackDashboard />} />
+
+
 
 
       </Routes>

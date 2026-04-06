@@ -2,6 +2,7 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import FeedbackNavbar from "./FeedbackNavbar";
 
+
 function Facilities() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-100 flex flex-col">
@@ -9,6 +10,7 @@ function Facilities() {
       <FeedbackNavbar />
 
       {/* Main Content */}
+      
       <div className="flex-grow px-6 md:px-16 py-12 flex flex-col md:flex-row items-center justify-between gap-12">
         {/* Left Content */}
         <div className="flex-1">
