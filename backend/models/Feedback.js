@@ -4,7 +4,7 @@ const feedbackSchema = new mongoose.Schema({
   category: String,
   feedbackText: String,
   image: String,
-  ratings: Object, // ✅ stores all ratings (any structure)
+  ratings: Object, 
   createdAt: { type: Date, default: Date.now }
 });
 

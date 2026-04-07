@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -14,6 +15,9 @@ if (dns.setDefaultResultOrder) {
 
 const app = express();
 
+const PORT = process.env.PORT || 5000;
+const MONGO_URL = process.env.MONGODB_URI;
+
 // ✅ Ensure uploads directory exists
 const fs = require("fs");
 const uploadDir = "uploads";
@@ -28,14 +32,15 @@ app.use(cors());
 app.use("/uploads", express.static("uploads")); // to serve uploaded images
 
 // ✅ MongoDB Connection
-const MONGO_URL =
-  "mongodb+srv://sheetalbeniwal60_db_user:kRprYnjFAA05lYFI@cluster0.vuurh1x.mongodb.net/?appName=Cluster0";
+if (!MONGO_URL) {
+  console.error("❌ MONGODB_URI is not defined in .env file");
+}
 
 mongoose
   .connect(MONGO_URL)
   .then(() => {
     console.log("✅ Connected to MongoDB");
-    app.listen(5000, () => console.log("🚀 Server running on port 5000"));
+    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   })
   .catch((err) => console.log(err));
 
