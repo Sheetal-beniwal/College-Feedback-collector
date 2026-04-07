@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import FeedbackNavbar from "./FeedbackNavbar";
 import { submitFeedback } from "../utils/submitFeedback";
+import { motion } from "framer-motion";
 
 export default function Events() {
   const [ratings, setRatings] = useState({
@@ -46,98 +47,112 @@ export default function Events() {
   return (
     <>
       <FeedbackNavbar />
+      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center py-12 px-4 sm:px-6 relative overflow-hidden">
+        
+        {/* Dynamic Abstract Background */}
+        <div className="absolute top-[-10%] right-[10%] w-[500px] h-[500px] rounded-full bg-pink-200 mix-blend-multiply filter blur-[120px] opacity-60 animate-pulse"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-rose-200 mix-blend-multiply filter blur-[120px] opacity-60 animate-pulse delay-700"></div>
 
-      <div className="min-h-screen bg-gradient-to-b from-pink-100 via-rose-50 to-pink-200 flex flex-col items-center p-4 py-12">
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col bg-white shadow-xl rounded-3xl overflow-hidden w-full max-w-5xl p-8 border border-pink-100"
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-full max-w-6xl relative z-10"
         >
-          <div className="text-center mb-10">
-            <h2 className="text-4xl font-extrabold text-gray-800 tracking-tight">
-              Feedback for Events
-            </h2>
-            <p className="text-gray-600 mt-2 italic">
-              From stage lights to spotlights – tell us how the event felt for you!
-            </p>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-start justify-center gap-12 w-full">
-            {/* Feedback Form */}
-            <div className="w-full md:w-[60%] space-y-8">
-              {/* Event Name */}
-              <div className="flex flex-col gap-2">
-                <label className="text-lg font-bold text-pink-700">Event Name</label>
-                <input
-                  type="text"
-                  value={eventName}
-                  onChange={(e) => setEventName(e.target.value)}
-                  placeholder="Enter event name (e.g. Annual Fest)"
-                  className="border-2 border-pink-100 rounded-xl px-4 py-3 w-full focus:ring-4 focus:ring-pink-200 focus:border-pink-400 outline-none transition-all"
-                  required
-                />
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col md:flex-row bg-white/70 backdrop-blur-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-[2.5rem] overflow-hidden border border-white"
+          >
+            <div className="w-full md:w-[60%] p-8 sm:p-12 lg:p-16">
+              <div className="mb-10">
+                <h2 className="text-4xl md:text-5xl font-extrabold text-slate-800 tracking-tight leading-tight mb-4">
+                  Events <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-500">Feedback</span>
+                </h2>
+                <p className="text-lg text-slate-500 font-medium leading-relaxed">
+                  From stage lights to spotlights – tell us how the event felt for you!
+                </p>
               </div>
 
-              {/* Rating Categories */}
-              <div className="space-y-6 bg-pink-50/50 p-6 rounded-2xl border border-pink-100">
-                <RatingRow
-                  label="Overall Experience"
-                  value={ratings.experience}
-                  onChange={(val) => handleRating("experience", val)}
-                />
-                <RatingRow
-                  label="Refreshment Quality"
-                  value={ratings.refreshments}
-                  onChange={(val) => handleRating("refreshments", val)}
-                />
-                <RatingRow
-                  label="Event Organization"
-                  value={ratings.organization}
-                  onChange={(val) => handleRating("organization", val)}
-                />
-              </div>
-
-              {/* Feedback Box */}
-              <div className="flex flex-col gap-2">
-                <label className="text-lg font-bold text-pink-700">Your Thoughts</label>
-                <textarea
-                  placeholder="Share your detailed experience..."
-                  rows={4}
-                  value={feedbackText}
-                  onChange={(e) => setFeedbackText(e.target.value)}
-                  className="w-full border-2 border-pink-100 rounded-xl px-4 py-3 focus:ring-4 focus:ring-pink-200 focus:border-pink-400 outline-none transition-all"
-                ></textarea>
-              </div>
-
-              <div className="flex flex-col sm:flex-row justify-between items-center gap-6 pt-4">
-                <label className="cursor-pointer border-2 border-dashed border-pink-300 px-6 py-3 rounded-xl bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold transition-all w-full sm:w-auto text-center">
-                  {imageFile ? "✅ Picture Selected" : "📷 Upload Picture"}
+              <div className="space-y-8">
+                {/* Event Name */}
+                <div className="flex flex-col gap-3">
+                  <label className="text-lg font-bold text-slate-700">Event Name</label>
                   <input
-                    type="file"
-                    className="hidden"
-                    onChange={(e) => setImageFile(e.target.files[0])}
+                    type="text"
+                    value={eventName}
+                    onChange={(e) => setEventName(e.target.value)}
+                    placeholder="Enter event name (e.g. Annual Fest)"
+                    className="border border-slate-200 rounded-2xl px-6 py-4 w-full focus:ring-4 focus:ring-pink-500/20 focus:border-pink-500 outline-none transition-all bg-white/50 backdrop-blur-sm shadow-inner text-slate-700"
+                    required
                   />
-                </label>
+                </div>
 
-                <button
-                  type="submit"
-                  className="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold text-lg shadow-lg hover:shadow-pink-200 hover:-translate-y-1 transition-all"
-                >
-                  Submit Celebration
-                </button>
+                {/* Ratings */}
+                <div className="space-y-5 bg-white/60 p-6 sm:p-8 rounded-[2rem] border border-slate-100 shadow-sm">
+                  <RatingRow
+                    label="Overall Experience"
+                    value={ratings.experience}
+                    onChange={(val) => handleRating("experience", val)}
+                  />
+                  <div className="h-px w-full bg-slate-100"></div>
+                  <RatingRow
+                    label="Refreshment Quality"
+                    value={ratings.refreshments}
+                    onChange={(val) => handleRating("refreshments", val)}
+                  />
+                  <div className="h-px w-full bg-slate-100"></div>
+                  <RatingRow
+                    label="Event Organization"
+                    value={ratings.organization}
+                    onChange={(val) => handleRating("organization", val)}
+                  />
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  <label className="text-lg font-bold text-slate-700">Detailed Thoughts</label>
+                  <textarea
+                    placeholder="Share your detailed experience..."
+                    rows={4}
+                    value={feedbackText}
+                    onChange={(e) => setFeedbackText(e.target.value)}
+                    className="w-full border border-slate-200 rounded-2xl px-6 py-4 focus:ring-4 focus:ring-pink-500/20 focus:border-pink-500 outline-none transition-all bg-white/50 backdrop-blur-sm shadow-inner resize-none text-slate-700"
+                  ></textarea>
+                </div>
+
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-6 pt-4">
+                  <label className="cursor-pointer border-2 border-dashed border-pink-300 px-8 py-4 rounded-2xl bg-pink-50/50 hover:bg-pink-50 text-pink-600 font-semibold transition-all w-full sm:w-auto text-center hover:shadow-md">
+                    {imageFile ? "✅ Picture Selected" : "📸 Attach a Photo"}
+                    <input
+                      type="file"
+                      className="hidden"
+                      onChange={(e) => setImageFile(e.target.files[0])}
+                    />
+                  </label>
+
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    type="submit"
+                    className="w-full sm:w-auto px-10 py-4 rounded-2xl bg-gradient-to-r from-pink-600 to-rose-500 text-white font-bold text-lg shadow-lg hover:shadow-pink-500/30 transition-all"
+                  >
+                    Submit Celebration
+                  </motion.button>
+                </div>
               </div>
             </div>
 
-            {/* Right Illustration */}
-            <div className="hidden md:flex flex-1 justify-center relative group w-full">
-              <div className="absolute inset-0 bg-pink-400 rounded-3xl blur-3xl opacity-20 group-hover:opacity-30 transition-all"></div>
-              <img
-                src="/feedback_photo.webp"
-                alt="Event Illustration"
-                className="relative w-full max-w-sm rounded-3xl shadow-2xl transition-transform duration-500 group-hover:rotate-1 group-hover:scale-105"
-              />
+            <div className="hidden md:flex flex-1 bg-gradient-to-br from-pink-50 to-rose-50 items-center justify-center p-12 order-first md:order-last border-l border-white/50">
+              <div className="relative isolate group w-full h-full flex items-center justify-center">
+                <div className="absolute inset-0 bg-pink-400 rounded-[3rem] blur-3xl opacity-20 group-hover:opacity-40 transition-all duration-700 -z-10"></div>
+                <img
+                  src="/feedback_photo.webp"
+                  alt="Events Illustration"
+                  className="relative w-full max-w-sm object-contain rounded-[2rem] shadow-[0_20px_50px_rgba(236,_72,_153,_0.15)] border-4 border-white/60 bg-white/40 backdrop-blur-md group-hover:-translate-y-2 transition-transform duration-500"
+                />
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </motion.div>
       </div>
     </>
   );
@@ -145,17 +160,17 @@ export default function Events() {
 
 function RatingRow({ label, value, onChange }) {
   return (
-    <div className="flex items-center justify-between gap-4">
-      <p className="text-gray-700 font-semibold">{label}</p>
-      <div className="flex gap-2">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+      <p className="text-slate-700 font-semibold text-lg">{label}</p>
+      <div className="flex gap-2 bg-slate-50 px-4 py-2 rounded-full border border-slate-100 shadow-inner">
         {[1, 2, 3, 4, 5].map((star) => (
           <FaStar
             key={star}
             onClick={() => onChange(star)}
-            className={`cursor-pointer text-3xl transition-all duration-150 ${
+            className={`cursor-pointer text-2xl transition-all duration-300 ${
               star <= value 
-                ? "text-pink-500 drop-shadow-[0_0_8px_rgba(236,72,153,0.4)] scale-110" 
-                : "text-gray-300 hover:text-pink-200"
+                ? "text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.5)] scale-110" 
+                : "text-slate-300 hover:text-amber-200"
             }`}
           />
         ))}
