@@ -84,7 +84,7 @@ function Facilities() {
           <div className="relative isolate group">
             <div className="absolute -inset-4 bg-gradient-to-r from-emerald-300 to-teal-300 rounded-[2.5rem] blur-2xl opacity-40 group-hover:opacity-70 transition-opacity duration-700 -z-10"></div>
             <img
-              src="/feedback_photo.webp"
+              src="/campus.png"
               alt="Facilities illustration"
               className="relative max-w-sm md:max-w-md lg:max-w-lg w-full object-contain rounded-[2rem] shadow-[0_20px_50px_rgba(16,_185,_129,_0.1)] border-4 border-white/60 bg-white/30 backdrop-blur-sm group-hover:-translate-y-2 transition-transform duration-500"
             />

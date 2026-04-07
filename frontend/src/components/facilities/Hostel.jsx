@@ -111,7 +111,7 @@ export default function Hostel() {
             <div className="relative group">
               <div className="absolute inset-0 bg-emerald-400 rounded-3xl blur-3xl opacity-20 group-hover:opacity-30 transition-all"></div>
               <img
-                src="/feedback_photo.webp"
+                src="/campus.png"
                 alt="Hostel Illustration"
                 className="relative w-full max-w-sm rounded-3xl shadow-2xl transition-transform duration-500 group-hover:scale-105"
               />

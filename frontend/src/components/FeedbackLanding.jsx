@@ -68,7 +68,7 @@ export default function FeedbackLanding() {
           >
             <div className="relative isolate group">
                <div className="absolute -inset-4 bg-gradient-to-br from-blue-400 to-cyan-300 rounded-[2.5rem] blur-2xl opacity-30 group-hover:opacity-50 transition-all duration-700 -z-10"></div>
-               <img src="/feedback_page.jpg" alt="Student Feedback Preview" className="relative w-full max-w-md lg:max-w-lg rounded-3xl shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] border-4 border-white/60 bg-white object-cover aspect-[4/5] object-center" />
+               <img src="/hero.png" alt="Student Feedback Preview" className="relative w-full max-w-md lg:max-w-lg rounded-3xl shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] border-4 border-white/60 bg-white object-cover aspect-[4/5] object-center" />
                
                {/* Floating Card */}
                <div className="absolute -bottom-8 -left-8 bg-white/90 backdrop-blur-xl border border-slate-100 p-5 rounded-2xl shadow-xl w-64 animate-[bounce_4s_ease-in-out_infinite]">

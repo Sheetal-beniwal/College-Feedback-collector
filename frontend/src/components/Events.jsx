@@ -145,7 +145,7 @@ export default function Events() {
               <div className="relative isolate group w-full h-full flex items-center justify-center">
                 <div className="absolute inset-0 bg-pink-400 rounded-[3rem] blur-3xl opacity-20 group-hover:opacity-40 transition-all duration-700 -z-10"></div>
                 <img
-                  src="/feedback_photo.webp"
+                  src="/campus.png"
                   alt="Events Illustration"
                   className="relative w-full max-w-sm object-contain rounded-[2rem] shadow-[0_20px_50px_rgba(236,_72,_153,_0.15)] border-4 border-white/60 bg-white/40 backdrop-blur-md group-hover:-translate-y-2 transition-transform duration-500"
                 />

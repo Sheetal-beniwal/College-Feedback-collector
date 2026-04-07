@@ -101,7 +101,7 @@ function FeedbackPage() {
           <div className="relative isolate group">
             <div className="absolute -inset-4 bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 rounded-[2.5rem] blur-2xl opacity-40 group-hover:opacity-70 transition-opacity duration-700 -z-10"></div>
             <img
-              src="/feedback_page.jpg"
+              src="/hero.png"
               alt="Students Illustration"
               className="relative max-w-sm md:max-w-md lg:max-w-lg w-full object-contain rounded-[2rem] shadow-[0_20px_50px_rgba(8,_112,_184,_0.07)] border-4 border-white/50 bg-white/20 backdrop-blur-sm group-hover:-translate-y-2 transition-transform duration-500"
             />
