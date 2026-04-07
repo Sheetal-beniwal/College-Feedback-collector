@@ -8,7 +8,8 @@ export const submitFeedback = async (data) => {
       }
     }
 
-    const res = await fetch("http://localhost:5000/api/feedback", {
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+    const res = await fetch(`${apiBaseUrl}/api/feedback`, {
       method: "POST",
       body: formData,
     });

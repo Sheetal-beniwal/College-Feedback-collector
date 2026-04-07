@@ -38,7 +38,7 @@ export default function Canteen() {
       setFeedbackText("");
       setImageFile(null);
       setRatings({ seating: 0, foodQuality: 0, cleanliness: 0 });
-    } catch (err) {
+    } catch(err) { console.error(err);
       alert("Failed to submit feedback.");
     }
   };

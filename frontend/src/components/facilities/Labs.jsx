@@ -38,7 +38,7 @@ export default function Labs() {
       setFeedbackText("");
       setImageFile(null);
       setRatings({ seating: 0, equipment: 0, cleanliness: 0 });
-    } catch (err) {
+    } catch(err) { console.error(err);
       alert("Failed to submit feedback.");
     }
   };

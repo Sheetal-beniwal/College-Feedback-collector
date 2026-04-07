@@ -35,7 +35,7 @@ export default function Academics() {
       setFeedbackText("");
       setImageFile(null);
       setRatings({ syllabus: 0, teaching: 0, doubts: 0 });
-    } catch (err) {
+    } catch(err) { console.error(err);
       alert("Failed to submit feedback.");
     }
   };

@@ -38,7 +38,7 @@ export default function Events() {
       setFeedbackText("");
       setImageFile(null);
       setRatings({ experience: 0, refreshments: 0, organization: 0 });
-    } catch (err) {
+    } catch(err) { console.error(err);
       alert("Failed to submit feedback. Check console.");
     }
   };

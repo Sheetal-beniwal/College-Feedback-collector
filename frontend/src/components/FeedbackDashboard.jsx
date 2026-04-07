@@ -23,7 +23,8 @@ export default function FeedbackDashboard() {
     setLoading(true);
     setError(null);
     try {
-      let url = "http://localhost:5000/api/feedback";
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+      let url = `${apiBaseUrl}/api/feedback`;
       if (selectedCategory && selectedCategory !== "All") {
         url += `?category=${selectedCategory}`;
       }
@@ -94,7 +95,7 @@ export default function FeedbackDashboard() {
                 >
                   {fb.image && (
                     <img
-                      src={`http://localhost:5000/uploads/${fb.image}`}
+                      src={`${import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"}/uploads/${fb.image}`}
                       alt="feedback"
                       className="w-full h-40 object-cover rounded-lg mb-4"
                     />

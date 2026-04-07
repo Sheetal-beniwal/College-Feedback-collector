@@ -32,7 +32,7 @@ export default function Hostel() {
       setFeedbackText("");
       setImageFile(null);
       setRatings({ safety: 0, basics: 0, cleanliness: 0 });
-    } catch (err) {
+    } catch(err) { console.error(err);
       alert("Failed to submit feedback.");
     }
   };
