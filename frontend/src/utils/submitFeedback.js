@@ -8,7 +8,7 @@ export const submitFeedback = async (data) => {
       }
     }
 
-    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://college-feedback-collector-1.onrender.com";
     const res = await fetch(`${apiBaseUrl}/api/feedback`, {
       method: "POST",
       body: formData,
