@@ -28,7 +28,9 @@ if (!fs.existsSync(uploadDir)) {
 // ✅ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+  origin: "https://college-feedback-collector.vercel.app"
+}));
 app.use("/uploads", express.static("uploads")); // to serve uploaded images
 
 // ✅ MongoDB Connection
