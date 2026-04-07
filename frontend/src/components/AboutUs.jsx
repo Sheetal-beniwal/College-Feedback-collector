@@ -25,9 +25,9 @@ export default function AboutUs() {
         <div className="flex-1 relative">
           <div className="absolute -inset-4 bg-emerald-100/50 rounded-3xl blur-3xl -z-10 animate-pulse"></div>
           <img 
-            src="/feedback_page.jpg" 
+            src="/hero.png" 
             alt="About Us" 
-            className="w-full rounded-2xl shadow-2xl border-2 border-emerald-50 transform hover:scale-105 transition-all duration-700" 
+            className="w-full max-w-md mx-auto relative rounded-3xl shadow-[0_20px_50px_rgba(16,_185,_129,_0.1)] border-4 border-white/60 bg-white object-cover aspect-square md:aspect-auto transform hover:-translate-y-2 hover:scale-105 transition-all duration-700" 
           />
         </div>
       </div>
