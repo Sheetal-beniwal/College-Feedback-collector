@@ -1,50 +1,75 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function Navbar() {
-  return (
-    <div>
-      <nav
-        className="w-full flex justify-between items-center py-4 px-8 
-        bg-gradient-to-r from-[#fff5f7] via-[#fdecef] to-[#fce7ec]
-        shadow-md border-b border-pink-100 backdrop-blur-md"
-      >
-        <h1 className="text-3xl font-extrabold  text-gray-800 tracking-tight">
-          CampusPulse
-        </h1>
+  const [scrolled, setScrolled] = useState(false);
 
-        <div className="space-x-8 text-lg font-medium">
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-4 sm:px-6 lg:px-8 ${scrolled ? "py-4" : "py-6"}`}>
+      <nav
+        className={`mx-auto max-w-6xl flex justify-between items-center transition-all duration-500 rounded-full
+        ${scrolled 
+          ? "bg-white/80 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] px-6 py-4 border border-white/60" 
+          : "bg-transparent px-2 py-2"}`}
+      >
+        {/* Logo */}
+        <RouterLink to="/" className="text-2xl font-black tracking-tighter text-slate-800 flex items-center gap-2 hover:scale-105 transition-transform duration-300">
+           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 shadow-lg shadow-blue-500/30 flex items-center justify-center text-white font-bold text-xl">
+              C
+           </div>
+           Campus<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Pulse</span>
+        </RouterLink>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-8 text-sm font-bold text-slate-600">
           <ScrollLink
             to="about"
             smooth={true}
             duration={600}
-            className="text-gray-700 hover:text-pink-600 hover:underline hover:underline-offset-4 transition-all duration-200 cursor-pointer"
+            className="hover:text-blue-600 cursor-pointer transition-colors"
           >
             About Us
           </ScrollLink>
-
           <ScrollLink
             to="contact"
             smooth={true}
             duration={600}
-            className="text-gray-700 hover:text-pink-600 hover:underline hover:underline-offset-4 transition-all duration-200 cursor-pointer"
+            className="hover:text-blue-600 cursor-pointer transition-colors"
           >
-            Contact Us
+            Contact
           </ScrollLink>
-
           <RouterLink
             to="/feedback"
-            className="text-gray-700 hover:text-pink-600 hover:underline hover:underline-offset-4 transition-all duration-200"
+            className="hover:text-blue-600 transition-colors"
           >
-            New Feedbacks
+            Feedback
           </RouterLink>
-
           <RouterLink
             to="/dashboard"
-            className="text-gray-700 hover:text-pink-600 hover:underline hover:underline-offset-4 transition-all duration-200"
+            className="hover:text-blue-600 transition-colors"
           >
-            All Feedback
+            Dashboard
+          </RouterLink>
+        </div>
+
+        {/* CTA Button */}
+        <div className="flex items-center">
+          <RouterLink to="/feedback">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden sm:block px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold rounded-full shadow-lg transition-all"
+            >
+              Get Started
+            </motion.button>
           </RouterLink>
         </div>
       </nav>
