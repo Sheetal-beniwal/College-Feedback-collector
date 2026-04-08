@@ -1,4 +1,38 @@
+import React, { useState } from 'react';
+
 export default function ContactUs() {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState({ state: 'idle', message: '' });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ state: 'loading', message: 'Sending...' });
+
+    try {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://college-feedback-collector-1.onrender.com";
+      const res = await fetch(`${apiBaseUrl}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await res.json();
+      if (!res.ok) {
+        throw new Error(result.message || "Failed to send message");
+      }
+
+      setStatus({ state: 'success', message: 'Message sent successfully!' });
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error(error);
+      setStatus({ state: 'error', message: error.message || 'Something went wrong. Please try again.' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 py-24 px-8">
       <div className="max-w-5xl mx-auto">
@@ -37,12 +71,50 @@ export default function ContactUs() {
 
         <div className="mt-16 bg-white p-10 rounded-3xl shadow-2xl">
           <h3 className="text-2xl font-bold mb-8">Send us a direct message</h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            <input type="text" placeholder="Your Name" className="w-full bg-gray-50 border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-emerald-400 outline-none" />
-            <input type="email" placeholder="Email Address" className="w-full bg-gray-50 border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-emerald-400 outline-none" />
-            <textarea placeholder="How can we help?" className="md:col-span-2 w-full bg-gray-50 border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-emerald-400 outline-none h-32"></textarea>
-            <button className="bg-emerald-600 text-white font-bold py-4 rounded-xl hover:bg-emerald-700 transition-all shadow-lg hover:shadow-emerald-200">Send Message</button>
-          </div>
+          <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-8">
+            <input 
+              type="text" 
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name" 
+              required
+              className="w-full bg-gray-50 border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-emerald-400 outline-none" 
+            />
+            <input 
+              type="email" 
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email Address" 
+              required
+              className="w-full bg-gray-50 border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-emerald-400 outline-none" 
+            />
+            <textarea 
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="How can we help?" 
+              required
+              className="md:col-span-2 w-full bg-gray-50 border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-emerald-400 outline-none h-32"
+            ></textarea>
+            
+            <div className="md:col-span-2 flex flex-col md:flex-row items-center gap-4">
+              <button 
+                type="submit" 
+                disabled={status.state === 'loading'}
+                className="w-full md:w-auto bg-emerald-600 text-white font-bold py-4 px-8 rounded-xl hover:bg-emerald-700 transition-all shadow-lg hover:shadow-emerald-200 disabled:opacity-70"
+              >
+                {status.state === 'loading' ? 'Sending...' : 'Send Message'}
+              </button>
+              
+              {status.message && (
+                <div className={`px-4 py-3 rounded-xl flex-1 ${status.state === 'success' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}`}>
+                  {status.message}
+                </div>
+              )}
+            </div>
+          </form>
         </div>
       </div>
     </div>
