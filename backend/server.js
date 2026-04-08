@@ -5,7 +5,9 @@ const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
 const dns = require("dns");
+const nodemailer = require("nodemailer");
 const Feedback = require("./models/Feedback");
+const Contact = require("./models/Contact");
 
 // ✅ Fix for DNS issues when connecting to MongoDB Atlas
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
@@ -106,3 +108,40 @@ app.get("/api/feedback", async (req, res) => {
   }
 });
 
+// ✅ POST route for Contact Us messages
+app.post("/api/contact", async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+    if (!name || !email || !message) {
+      return res.status(400).json({ success: false, message: "All fields are required" });
+    }
+
+    const newContact = new Contact({ name, email, message });
+    await newContact.save();
+
+    // Send email notification
+    if (process.env.ADMIN_EMAIL && process.env.GMAIL_APP_PASSWORD) {
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.ADMIN_EMAIL,
+          pass: process.env.GMAIL_APP_PASSWORD,
+        },
+      });
+
+      const mailOptions = {
+        from: process.env.ADMIN_EMAIL,
+        to: process.env.ADMIN_EMAIL,
+        subject: `New Contact US Message - College Feedback Collector`,
+        text: `You have received a new message from the "Contact Us" form.\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}\n\nHave a great day!`,
+      };
+
+      await transporter.sendMail(mailOptions);
+    }
+
+    res.json({ success: true, message: "Message sent successfully!" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: "Error sending message" });
+  }
+});
