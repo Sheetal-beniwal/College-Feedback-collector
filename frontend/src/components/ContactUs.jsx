@@ -20,7 +20,14 @@ export default function ContactUs() {
         body: JSON.stringify(formData),
       });
 
-      const result = await res.json();
+      let result = {};
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        result = await res.json();
+      } else {
+        throw new Error(`Server returned no JSON. Status: ${res.status}. This usually means Render is still deploying or sleeping.`);
+      }
+
       if (!res.ok) {
         throw new Error(result.message || "Failed to send message");
       }
