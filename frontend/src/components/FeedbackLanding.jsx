@@ -91,7 +91,13 @@ export default function FeedbackLanding() {
       {/* Features Section */}
       <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
-           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+           <motion.div
+             initial={{ opacity: 0, y: 30 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.8 }}
+             className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+           >
              <div>
                <h4 className="text-blue-600 font-extrabold uppercase tracking-widest text-xs mb-3">Integrity First</h4>
                <h2 className="text-4xl md:text-5xl font-extrabold text-slate-800 tracking-tight">Built on Trust and <br className="hidden md:block" /> Transparency</h2>
@@ -99,7 +105,7 @@ export default function FeedbackLanding() {
              <p className="max-w-sm text-slate-500 font-medium pb-2 text-lg">
                We ensure that your voice is heard without compromising your identity or the truth.
              </p>
-           </div>
+           </motion.div>
            
            <div className="grid md:grid-cols-3 gap-8">
              {/* Feature 1 */}
@@ -179,7 +185,13 @@ export default function FeedbackLanding() {
       {/* CTA Section */}
       <section className="py-32 bg-white relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-100/50 to-cyan-100/50 rounded-full blur-[100px] -z-10 animate-pulse"></div>
-        <div className="max-w-4xl mx-auto px-6 text-center z-10 relative">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto px-6 text-center z-10 relative"
+        >
           <div className="inline-block px-4 py-1.5 bg-slate-800 text-white rounded-full text-xs font-bold tracking-widest uppercase mb-8 shadow-lg">
             Ready to pulse?
           </div>
@@ -192,13 +204,13 @@ export default function FeedbackLanding() {
                   Start Submitting
                 </button>
              </RouterLink>
-             <RouterLink to="/contact">
+             <RouterLink to="/dashboard">
                 <button className="px-10 py-5 bg-white text-slate-700 border-2 border-slate-200 rounded-2xl font-bold text-lg hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm">
-                  Partner with us
+                  Dashboard
                 </button>
              </RouterLink>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Legacy sections included */}

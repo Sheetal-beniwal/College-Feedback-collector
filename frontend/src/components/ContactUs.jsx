@@ -13,8 +13,7 @@ export default function ContactUs() {
               <span className="text-2xl">📧</span>
             </div>
             <h3 className="text-xl font-bold mb-2">Email Address</h3>
-            <p className="text-gray-500">support@campuspulse.edu</p>
-            <p className="text-gray-500">contact@sheetal.dev</p>
+            <p className="text-gray-500">sheetalbeniwal60@gmail.com</p>
           </div>
 
           <div className="bg-white p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all">
@@ -22,7 +21,7 @@ export default function ContactUs() {
               <span className="text-2xl">📞</span>
             </div>
             <h3 className="text-xl font-bold mb-2">Phone Support</h3>
-            <p className="text-gray-500">+91 9876543210</p>
+            <p className="text-gray-500">+91 9992365033</p>
             <p className="text-gray-500">Mon - Fri, 9am - 6pm</p>
           </div>
 
